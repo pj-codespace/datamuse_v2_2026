@@ -1,0 +1,153 @@
+{
+  "project": {
+    "name": "Financial sustainability of RRCS in Africa",
+    "description": "Who can influence financial sustainability of research and related capacities in Africa",
+    "datafile": "Who can influence financial sustainability of RRCS in Africa.xlsx",
+    "settings": {
+      "highestInfluenceValue": 7,
+      "influenceLevels": [
+        {
+          "value": 0,
+          "label": "Influence Level: 0"
+        },
+        {
+          "value": 1,
+          "label": "Influence Level: 1"
+        },
+        {
+          "value": 2,
+          "label": "Influence Level: 2"
+        },
+        {
+          "value": 3,
+          "label": "Influence Level: 3"
+        },
+        {
+          "value": 4,
+          "label": "Influence Level: 4"
+        },
+        {
+          "value": 5,
+          "label": "Influence Level: 5"
+        },
+        {
+          "value": 6,
+          "label": "Influence Level: 6"
+        },
+        {
+          "value": 7,
+          "label": "Influence Level: 7"
+        }
+      ],
+      "interestLevels": [
+        {
+          "value": -3,
+          "label": "Completely Opposed"
+        },
+        {
+          "value": -2,
+          "label": "Opposed"
+        },
+        {
+          "value": -1,
+          "label": "Mildly Opposed"
+        },
+        {
+          "value": 0,
+          "label": "Neutral"
+        },
+        {
+          "value": 1,
+          "label": "Mildly Interested"
+        },
+        {
+          "value": 2,
+          "label": "Interested"
+        },
+        {
+          "value": 3,
+          "label": "Very Interested"
+        }
+      ],
+      "categories": [
+        {"id": "cat_0", "label": "Implementing Partners", "color": "#89f7b1"},
+        {"id": "cat_1", "label": "Philanthropy", "color": "#eeb079"},
+        {"id": "cat_2", "label": "Advocacy Actors/ Lobbyists", "color": "#69398d"},
+        {"id": "cat_3", "label": "Govt Agencies", "color": "#a989cb"},
+        {"id": "cat_4", "label": "Supra National", "color": "#b0995a"},
+        {"id": "cat_5", "label": "Governments", "color": "#2c05b4"},
+        {"id": "cat_6", "label": "Intermediaries", "color": "#957548"}
+      ],
+      "linkTypes": [
+        {
+          "id": "linktype_0",
+          "label": "Collaboration",
+          "direction": "directed",
+          "color": "#9533b7"
+        },
+        {
+          "id": "linktype_1",
+          "label": "Capacity Strengthening",
+          "direction": "directed",
+          "color": "#c250ca"
+        },
+        {
+          "id": "linktype_2",
+          "label": "Awareness Raising",
+          "direction": "directed",
+          "color": "#4cb4b1"
+        },
+        {
+          "id": "linktype_3",
+          "label": "Funding",
+          "direction": "directed",
+          "color": "#fb22cb"
+        }
+      ],
+      "linkStrengths": [
+        {
+          "value": 0,
+          "type": "weak",
+          "label": "Weak"
+        },
+        {
+          "value": 1,
+          "type": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": 2,
+          "type": "strong",
+          "label": "Strong"
+        }
+      ]
+    },
+    "nodes": [
+      {
+        "id": 0,
+        "name": "R&D Organisations",
+        "category": "cat_0",
+        "interest": 0,
+        "influence": 4,
+        "description": "Day to day operations centred around research and related capacities"
+      },
+      {
+        "id": 1,
+        "name": "APHRC",
+        "category": "cat_0",
+        "interest": 0,
+        "influence": 4,
+        "relativeInfluence": "0.57",
+        "description": "Day to day operations centred around research and related capacities"
+      }
+    ],
+    "links": [
+      {
+        "type": "linktype_0",
+        "source": 0,
+        "target": 1,
+        "strength": "1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1872 @@
+{
+  "project": {
+    "name": "Establishment AND/OR Improvement of Open-air Food Markets",
+    "description": "This analysis seeks map the various stakeholders in selected counties and markets while analyzing their attitudes, interests and perceptions regarding the establishment and/or improvement open-air food markets.",
+    "settings": {
+      "highestInfluenceValue": 10,
+      "influenceLevels": [
+        {
+          "value": 0,
+          "label": "Influence Level: 0"
+        },
+        {
+          "value": 1,
+          "label": "Influence Level: 1"
+        },
+        {
+          "value": 2,
+          "label": "Influence Level: 2"
+        },
+        {
+          "value": 3,
+          "label": "Influence Level: 3"
+        },
+        {
+          "value": 4,
+          "label": "Influence Level: 4"
+        },
+        {
+          "value": 5,
+          "label": "Influence Level: 5"
+        },
+        {
+          "value": 6,
+          "label": "Influence Level: 6"
+        },
+        {
+          "value": 7,
+          "label": "Influence Level: 7"
+        },
+        {
+          "value": 8,
+          "label": "Influence Level: 8"
+        },
+        {
+          "value": 9,
+          "label": "Influence Level: 9"
+        },
+        {
+          "value": 10,
+          "label": "Influence Level: 10"
+        }
+      ],
+      "interestLevels": [
+        {
+          "value": -3,
+          "label": "Completely Opposed"
+        },
+        {
+          "value": -2,
+          "label": "Opposed"
+        },
+        {
+          "value": -1,
+          "label": "Mildly Opposed"
+        },
+        {
+          "value": 0,
+          "label": "Neutral"
+        },
+        {
+          "value": 1,
+          "label": "Mildly Interested"
+        },
+        {
+          "value": 2,
+          "label": "Interested"
+        },
+        {
+          "value": 3,
+          "label": "Very Interested"
+        }
+      ],
+      "categories": [
+        {
+          "id": "cat_0",
+          "label": "Government",
+          "color": "#1eed02"
+        },
+        {
+          "id": "cat_1",
+          "label": "Public Company",
+          "color": "#00f1f5"
+        },
+        {
+          "id": "cat_2",
+          "label": "Consumers",
+          "color": "#5755f7"
+        },
+        {
+          "id": "cat_3",
+          "label": "Public Benefit Organization",
+          "color": "#f0051c"
+        },
+        {
+          "id": "cat_4",
+          "label": "Development Partners",
+          "color": "#0f0fc6"
+        },
+        {
+          "id": "cat_5",
+          "label": "Market Users",
+          "color": "#fbf304"
+        },
+        {
+          "id": "cat_6",
+          "label": "Service Providers",
+          "color": "#d617d9"
+        }
+      ],
+      "linkTypes": [
+        {
+          "id": "linktype_0",
+          "label": "Authority",
+          "direction": "directed",
+          "color": "#000000"
+        },
+        {
+          "id": "linktype_1",
+          "label": "Corruption",
+          "direction": "directed",
+          "color": "#f9011a"
+        },
+        {
+          "id": "linktype_2",
+          "label": "Enforcement",
+          "direction": "directed",
+          "color": "#0152e9"
+        },
+        {
+          "id": "linktype_3",
+          "label": "Investment-Funding",
+          "direction": "directed",
+          "color": "#9e3b05"
+        },
+        {
+          "id": "linktype_4",
+          "label": "Policy",
+          "direction": "directed",
+          "color": "#ebef01"
+        },
+        {
+          "id": "linktype_5",
+          "label": "Expertise",
+          "direction": "directed",
+          "color": "#b759db"
+        },
+        {
+          "id": "linktype_6",
+          "label": "Oversight",
+          "direction": "directed",
+          "color": "#04f10c"
+        }
+      ],
+      "linkStrengths": [
+        {
+          "value": 0,
+          "type": "weak",
+          "label": "Weak"
+        },
+        {
+          "value": 1,
+          "type": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": 2,
+          "type": "strong",
+          "label": "Strong"
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "name": "Trade Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 10,
+      "description": ""
+    },
+    {
+      "id": 1,
+      "name": "Agriculture Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 8,
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "Planning Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 2,
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "Health Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 8,
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "ICT Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 0,
+      "description": ""
+    },
+    {
+      "id": 5,
+      "name": "Environment Dpt",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 6,
+      "description": ""
+    },
+    {
+      "id": 6,
+      "name": "Energy",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 5,
+      "description": ""
+    },
+    {
+      "id": 7,
+      "name": "Public Works",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 5,
+      "description": ""
+    },
+    {
+      "id": 8,
+      "name": "NEMA",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 4,
+      "description": ""
+    },
+    {
+      "id": 9,
+      "name": "KEBS",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 4,
+      "description": ""
+    },
+    {
+      "id": 10,
+      "name": "WRA",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 5,
+      "description": ""
+    },
+    {
+      "id": 11,
+      "name": "Treasury",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 6,
+      "description": ""
+    },
+    {
+      "id": 12,
+      "name": "County Assembly",
+      "category": "cat_0",
+      "interest": 2,
+      "influence": 8,
+      "description": ""
+    },
+    {
+      "id": 13,
+      "name": "KPLC",
+      "category": "cat_1",
+      "interest": 1,
+      "influence": 2,
+      "description": "Incharge of provision of electricity for use in the market"
+    },
+    {
+      "id": 14,
+      "name": "WASCOs",
+      "category": "cat_1",
+      "interest": 1,
+      "influence": 2,
+      "description": ""
+    },
+    {
+      "id": 15,
+      "name": "Consumers",
+      "category": "cat_2",
+      "interest": 2,
+      "influence": 10,
+      "description": ""
+    },
+    {
+      "id": 16,
+      "name": "NGOs",
+      "category": "cat_3",
+      "interest": 1,
+      "influence": 1,
+      "description": ""
+    },
+    {
+      "id": 17,
+      "name": "EAGC",
+      "category": "cat_3",
+      "interest": 2,
+      "influence": 8,
+      "description": ""
+    },
+    {
+      "id": 18,
+      "name": "SACCOs",
+      "category": "cat_3",
+      "interest": 2,
+      "influence": 0,
+      "description": ""
+    },
+    {
+      "id": 19,
+      "name": "MFIs",
+      "category": "cat_3",
+      "interest": 2,
+      "influence": 0,
+      "description": ""
+    },
+    {
+      "id": 20,
+      "name": "CBOs",
+      "category": "cat_3",
+      "interest": 1,
+      "influence": 0,
+      "description": ""
+    },
+    {
+      "id": 21,
+      "name": "Rockefeller",
+      "category": "cat_4",
+      "interest": 2,
+      "influence": 3,
+      "description": "Provide funding and support for establishment of open air markets"
+    },
+    {
+      "id": 22,
+      "name": "World Bank",
+      "category": "cat_4",
+      "interest": 2,
+      "influence": 4,
+      "description": "Provide funding and support for establishment of open air markets"
+    },
+    {
+      "id": 23,
+      "name": "GIZ",
+      "category": "cat_4",
+      "interest": 2,
+      "influence": 0,
+      "description": "Provide funding and support for establishment of open air markets"
+    },
+    {
+      "id": 24,
+      "name": "Practical Action",
+      "category": "cat_4",
+      "interest": 2,
+      "influence": 0,
+      "description": "Provide funding and support for establishment of open air markets"
+    },
+    {
+      "id": 25,
+      "name": "Cartels",
+      "category": "cat_5",
+      "interest": -2,
+      "influence": 5,
+      "description": ""
+    },
+    {
+      "id": 26,
+      "name": "Transporters",
+      "category": "cat_5",
+      "interest": 2,
+      "influence": 4,
+      "description": "Provide transportation services for all market users"
+    },
+    {
+      "id": 27,
+      "name": "DSP",
+      "category": "cat_5",
+      "interest": 2,
+      "influence": 4,
+      "description": "Provide smart technologies such as solar, biodigesters, recycling services"
+    },
+    {
+      "id": 28,
+      "name": "Private Traders",
+      "category": "cat_5",
+      "interest": 2,
+      "influence": 10,
+      "description": ""
+    },
+    {
+      "id": 29,
+      "name": "Street Vendors",
+      "category": "cat_5",
+      "interest": 2,
+      "influence": 4,
+      "description": ""
+    },
+    {
+      "id": 30,
+      "name": "Market Committee",
+      "category": "cat_5",
+      "interest": 2,
+      "influence": 10,
+      "description": ""
+    },
+    {
+      "id": 31,
+      "name": "Architects",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 3,
+      "description": ""
+    },
+    {
+      "id": 32,
+      "name": "Engineers",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 3,
+      "description": ""
+    },
+    {
+      "id": 33,
+      "name": "Environmentalists",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 3,
+        "description": ""
+    },
+    {
+      "id": 34,
+      "name": "Hydrologists",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 3,
+      "description": ""
+    },
+    {
+      "id": 35,
+      "name": "Banks",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 4,
+      "description": ""
+    },
+    {
+      "id": 36,
+      "name": "MPESA",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 0,
+      "description": ""
+    },
+    {
+      "id": 37,
+      "name": "Landlords",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 10,
+      "description": ""
+    },
+    {
+      "id": 38,
+      "name": "STP",
+      "category": "cat_6",
+      "interest": 2,
+      "influence": 8,
+      "description": ""
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 5,
+      "type": "linktype_6",
+      "strength": 1
+    },
+    {
+      "source": 0,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2"
+    },
+    {
+      "source": 0,
+      "target": 18,
+      "type": "linktype_0",
+      "strength": 0
+    },
+    {
+      "source": 0,
+      "target": 26,
+      "type": "linktype_4",
+      "strength": "1"
+    },
+    {
+      "source": 0,
+      "target": 28,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 0,
+      "target": 29,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 0,
+      "target": 30,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 1,
+      "target": 15,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 1,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 1,
+      "target": 28,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 0,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 31,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 32,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 33,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 34,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 37,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 2,
+      "target": 37,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 3,
+      "target": 8,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 15,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 26,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 26,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 3,
+      "target": 28,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 28,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 3,
+      "target": 29,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 29,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 3,
+      "target": 30,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 32,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 33,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 34,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 3,
+      "target": 37,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 4,
+      "target": 0,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 4,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 4,
+      "target": 27,
+      "type": "linktype_6",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 0,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 26,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 29,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 30,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 31,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 32,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 33,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 34,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 37,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 5,
+      "target": 37,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 5,
+      "target": 38,
+      "type": "linktype_0",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 6,
+      "target": 13,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 6,
+      "target": 13,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 6,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 6,
+      "target": 38,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 0,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 0,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 2
+    },
+    {
+      "source": 7,
+      "target": 2,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 2,
+      "type": "linktype_6",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 7,
+      "target": 14,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 31,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 7,
+      "target": 37,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 0,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 1,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 3,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 5,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 7,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 10,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 13,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 14,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 14,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 8,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 25,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 26,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 26,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 8,
+      "target": 27,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 28,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 29,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 30,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 31,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 32,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 33,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 33,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 8,
+      "target": 34,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 34,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 8,
+      "target": 37,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 8,
+      "target": 37,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 8,
+      "target": 38,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 9,
+      "target": 15,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 9,
+      "target": 15,
+      "type": "linktype_6",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 9,
+      "target": 28,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 9,
+      "target": 28,
+      "type": "linktype_6",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 9,
+      "target": 29,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 2,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 4,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 7,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 8,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 14,
+      "type": "linktype_2",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 10,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 1,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 2,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 3,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 4,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 5,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 6,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 7,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 13,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 18,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 19,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 35,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 11,
+      "target": 35,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 11,
+      "target": 36,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 0,
+      "type": "linktype_0",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 0,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 2
+    },
+    {
+      "source": 12,
+      "target": 0,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 3
+    },
+    {
+      "source": 12,
+      "target": 1,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 2,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 3,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 5,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 7,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 8,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 11,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 16,
+      "type": "linktype_0",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 27,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 12,
+      "target": 28,
+      "type": "linktype_4",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 13,
+      "target": 6,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 13,
+      "target": 25,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 14,
+      "target": 25,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 15,
+      "target": 35,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 15,
+      "target": 37,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 16,
+      "target": 38,
+      "type": "linktype_5",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 17,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 17,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 17,
+      "target": 15,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 18,
+      "target": 15,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 18,
+      "target": 28,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 18,
+      "target": 37,
+      "type": "linktype_3",
+      "strength": "0",
+      "linkNum": 1
+    },
+    {
+      "source": 19,
+      "target": 10,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 19,
+      "target": 15,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 19,
+      "target": 28,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 21,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 21,
+      "target": 17,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 22,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 22,
+      "target": 11,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 22,
+      "target": 14,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 22,
+      "target": 16,
+      "type": "linktype_0",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 22,
+      "target": 36,
+      "type": "linktype_2",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 23,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 23,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 23,
+      "target": 20,
+      "type": "linktype_3",
+      "strength": "0",
+      "linkNum": 1
+    },
+    {
+      "source": 23,
+      "target": 38,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 24,
+      "target": 0,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 24,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 24,
+      "target": 38,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 25,
+      "target": 12,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 25,
+      "target": 13,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 25,
+      "target": 26,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 25,
+      "target": 27,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 25,
+      "target": 34,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 26,
+      "target": 25,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 19,
+      "type": "linktype_6",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 25,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 30,
+      "type": "linktype_6",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 35,
+      "type": "linktype_2",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 35,
+      "type": "linktype_6",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 27,
+      "target": 36,
+      "type": "linktype_2",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 27,
+      "target": 36,
+      "type": "linktype_6",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 28,
+      "target": 30,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 29,
+      "target": 2,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 30,
+      "target": 22,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 30,
+      "target": 26,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 31,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 31,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 31,
+      "target": 37,
+      "type": "linktype_0",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 31,
+      "target": 37,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 2
+    },
+    {
+      "source": 32,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 32,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 32,
+      "target": 37,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 33,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 33,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 33,
+      "target": 21,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 34,
+      "target": 0,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 34,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 35,
+      "target": 17,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 35,
+      "target": 26,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 35,
+      "target": 28,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 35,
+      "target": 38,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 36,
+      "target": 28,
+      "type": "linktype_3",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 36,
+      "target": 31,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 37,
+      "target": 13,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 37,
+      "target": 14,
+      "type": "linktype_3",
+      "strength": "1",
+      "linkNum": 1
+    },
+    {
+      "source": 37,
+      "target": 29,
+      "type": "linktype_6",
+      "strength": 1,
+      "direction": "directed",
+      "linkNum": 1
+    },
+    {
+      "source": 37,
+      "target": 30,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 37,
+      "target": 31,
+      "type": "linktype_1",
+      "strength": "2",
+      "linkNum": 1
+    },
+    {
+      "source": 38,
+      "target": 17,
+      "type": "linktype_5",
+      "strength": "2",
+      "linkNum": 1
+    }
+  ]
+}
