@@ -108,8 +108,13 @@ function buildNeighborMap(links: SimLink[]): Map<number, Set<number>> {
     else neighbors.set(a, new Set([b]));
   };
   for (const link of links) {
-    const sourceId = typeof link.source === "object" ? link.source.id : link.source;
-    const targetId = typeof link.target === "object" ? link.target.id : link.target;
+    const rawSource = typeof link.source === "object" ? link.source.id : link.source;
+    const rawTarget = typeof link.target === "object" ? link.target.id : link.target;
+    
+    // Explicitly coerce to number to satisfy TypeScript
+    const sourceId = Number(rawSource);
+    const targetId = Number(rawTarget);
+
     addEdge(sourceId, targetId);
     addEdge(targetId, sourceId);
   }
