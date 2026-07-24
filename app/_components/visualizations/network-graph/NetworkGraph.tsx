@@ -434,7 +434,7 @@ const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function 
       );
 
     const dragBehavior = d3
-      .drag<SVGCircleElement, SimNode>()
+      .drag<any, SimNode>() // <--- Change SVGCircleElement to any (or Element)
       .on("start", (event, d) => {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
