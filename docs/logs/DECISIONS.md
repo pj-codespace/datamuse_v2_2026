@@ -1,3 +1,9 @@
+---
+title: Decision Log
+order: 0
+---
+
+
 # Decision Log
 
 Append new entries at the top. Don't rewrite or delete old entries, even if later reversed — add a new entry noting the reversal and link back to the original.

@@ -41,6 +41,22 @@ app/
       tools.ts                     → shared placeholder tool list (Add/Edit/Delete Actor, Link, Filter)
 public/
   data/*.json                       → cleaned per-project datasets (see §6)
+docs/                                → project documentation, source markdown (see §9); NOT in public/ —
+                                        rendered via app/docs, not served as static files
+  README.md, ARCHITECTURE.md, etc.
+  settled/
+    guides/
+```
+
+Also added under `app/` (routes/lib for the `/docs` section — see §9 for details):
+```
+app/
+  _lib/docs/                        → types.ts, docs-data.ts (fs walk + nav tree), markdown.ts (render pipeline)
+  _components/docs/                 → DocsSidebar.tsx, TableOfContents.tsx, DocsSearch.tsx, DocsShell.tsx
+  docs/
+    layout.tsx                      → docs section shell (header, highlight.js theme import)
+    [[...slug]]/page.tsx            → catch-all route, renders matched markdown file
+  api/docs/search/route.ts          → search endpoint (title + body substring match)
 ```
 
 Conventions: `_lib` = renderer-agnostic domain logic/types; `_components/layout` = UI chrome; `_components/visualizations` = chart implementations (currently only the force graph; room for matrix/bar/radar later). Underscore-prefixed folders are private (not routable) per Next.js convention.
@@ -48,6 +64,8 @@ Conventions: `_lib` = renderer-agnostic domain logic/types; `_components/layout`
 ---
 
 ## 2. Data model
+
+> **⚠️ Important — read before assuming anything about persistence:** the static JSON files under `public/data/` described below are **test/dev fixtures only**, standing in for real data during this architecture exercise. The actual production data will be **stored and managed in a backend** (database + API), not as static JSON files shipped with the app. Don't treat the current file-based loading (`network-data.ts` reading `/public/data/*.json`) as the intended end-state architecture — it's a convenient stand-in until the backend exists, and anything built on top of it (loaders, registry, Views persistence, etc.) should be designed with that eventual swap in mind rather than assuming files-on-disk permanently.
 
 - **Source data per project**: static JSON in `public/data/`, shape `{ project: {...}, nodes: [...], links: [...] }`.
 - **`project.settings`** is the canonical schema shared across a project: `categories`, `linkTypes` (with `direction: "directed"|"undirected"`), `linkStrengths`, `influenceLevels`, `interestLevels`.
@@ -109,7 +127,7 @@ Conventions: `_lib` = renderer-agnostic domain logic/types; `_components/layout`
 - **Filters are NOT dataset-scoped** — they only reference project-level settings (category/link-type ids), so they're reusable across many datasets (envisioned use case: 500+ survey-response datasets). Filters use **reference semantics with track-vs-pin choice**: a named filter is a pointer to an immutable filter-value; editing the named filter creates a new immutable value and moves the pointer; each View can either track the pointer (auto-updates) or pin to a specific historical value (frozen). Changing a filter's parameters = a genuinely different filter, not a mutation — this was an explicit, deliberate design choice.
 - **Project-level settings changes** (categories/link types) will be classified as breaking vs. non-breaking, at an administrator's discretion.
 - **Audit trails are required** for all of the above (research/provenance requirement) — bigger backbone than originally scoped, intentionally deferred pending more definite requirements from the user.
-- **Sticky/pinned nodes + stop/start simulation**: explicitly deferred. The user has a specific, not-yet-explained reason this needs to be architecturally separate from normal simulation behavior — do not assume design details here; wait for the user's brief.
+- **Sticky/pinned nodes + stop/start simulation**: explicitly deferred. **Reason (now confirmed)**: pinning/sticking a node implies writing its position to persistent storage, which the user doesn't want to design prematurely — persistence architecture (see §2's backend note) is intentionally being held off until visualization behavior (what "sticking" means, when it happens, what triggers a write) is settled first. Don't design the write path for this feature until that's briefed.
 - Current drag behavior is **intentionally left as the pre-Views default** (temporary pin during drag, releases on drop) per explicit instruction — do not change this until the stop/start-sim feature is specified.
 
 ---
@@ -120,10 +138,36 @@ Multiple real project datasets are being used to stress-test the model (not just
 
 ---
 
-## 7. Deferred / not yet built (parking lot)
+## 7. Documentation section (`/docs`) — built
+
+A browsable docs site was added at `/docs`, separate from the main app UI. Not tied to the network-visualization data model at all — purely a way to browse the project's own markdown docs (this file included) in-browser instead of only on disk.
+
+- **Source of truth**: a `docs/` folder at the **project root** (sibling of `app/`, `public/`), holding real markdown files in whatever nested folder structure makes sense — currently:
+  ```
+  docs/
+    README.md, ARCHITECTURE.md, DECISIONS.md, project-summary.md, views-schema.md
+    settled/
+      DEV-NOTES.md, VIEWS-AND-FILTERS.md
+      guides/
+        adding-a-dataset.md
+  ```
+  Deliberately **not** placed in `public/` — the raw `.md` files aren't meant to be served as static assets; they're read server-side via `fs` and rendered to HTML.
+- **Routing**: `app/docs/[[...slug]]/page.tsx`, an optional catch-all route. A folder's own `README.md` (if present) becomes that folder's index page; folders without one (`settled/`, `guides/` currently) are still expandable in the sidebar but not directly navigable. URLs mirror on-disk filenames exactly, including case (e.g. `docs/ARCHITECTURE.md` → `/docs/ARCHITECTURE`).
+- **Rendering pipeline** (`app/_lib/docs/markdown.ts`): `unified` + `remark-parse` + `remark-gfm` + `remark-rehype` + `rehype-slug` + `rehype-highlight` + `rehype-stringify`. Frontmatter (`title`, `description`) parsed via `gray-matter`, with title falling back to the first `# Heading`, then a filename-derived title. Heading IDs (from `rehype-slug`) are collected during the same pass into a `DocHeading[]` list, which drives the per-page table of contents — avoids a second parse of the tree.
+- **Sidebar** (`DocsSidebar.tsx`): built from a recursive folder walk (`docs-data.ts`) done once per request (wrapped in React's `cache()`), sorted alphabetically with files and folders interleaved. Expand state defaults to open along the path to the current page.
+- **Table of contents** (`TableOfContents.tsx`): right-hand column, IntersectionObserver-based scrollspy highlighting the current section.
+- **Search**: `app/api/docs/search/route.ts`. Builds an in-memory index (title + plain-text excerpt per doc) lazily on first request, cached for the life of the server process; does title+body substring matching, title matches ranked higher. **Known limitation, not yet revisited**: this rebuild-on-cold-start approach is fine at current doc volume but would need to move to a build-time-generated static index if the docs corpus grows much larger.
+- **Styling**: Tailwind's `@tailwindcss/typography` plugin (`prose` classes) for markdown styling; `highlight.js`'s `github-dark` theme for code blocks, imported globally in `app/docs/layout.tsx` — meaning code blocks are always dark-themed regardless of the rest of the site's light/dark mode. Revisiting this (theme-aware code blocks) is a possible future item, not yet requested.
+- **Two dependency gotchas hit during integration, resolved**:
+  - `rehype-highlight` needs `highlight.js` itself listed as a **direct** dependency (not just transitively present) for its CSS theme files to resolve under pnpm's strict `node_modules` layout.
+  - The type-only import `import type { Root, Element, Text } from "hast"` needs `@types/hast` installed — **not** a same-named `hast` package on npm, which is a different, unrelated package. This passed local `tsx`-based testing (which strips `import type` without resolving it) but failed under Next's real `tsc`-based `next build`, which is why it wasn't caught until the first Vercel deploy. Lesson: `next build` locally before pushing catches real type-resolution issues that `next dev` and lightweight test runners can miss.
+
+---
+
+## 8. Deferred / not yet built (parking lot)
 
 - Views (see §5) — designed, not implemented.
-- Sticky/pinned nodes + stop/start simulation control — deferred, needs a user briefing before starting.
+- Sticky/pinned nodes + stop/start simulation control — deferred until visualization behavior (what "sticking" means, when a write is triggered) is settled; persistence architecture (see §2) isn't being designed prematurely.
 - Actual CRUD for actors/links (Add/Edit/Delete Actor, Link tools) — UI triggers exist, panels are placeholders, no data-mutation layer yet.
 - Save/Export functionality — buttons exist, no backend.
 - Renderer switching (SVG → Canvas → WebGL based on graph size) — discussed as a real architecture question; explicitly tabled with no urgency, but the user wants the architecture to leave room for it eventually. Key insight if revisited: **link count**, not node count, is the actual bottleneck in this app's datasets — a size threshold should weigh links (or total elements), not nodes alone.
@@ -133,7 +177,7 @@ Multiple real project datasets are being used to stress-test the model (not just
 
 ---
 
-## 8. Working conventions established with the user
+## 9. Working conventions established with the user
 
 - Prefer discussing architecture tradeoffs explicitly before building anything non-trivial (this happened for Views, filter semantics, and renderer switching) — don't assume defaults for genuinely open design questions when the user has flagged something as an "architecture benchmark."
 - For concrete, well-scoped UI/behavior requests, implement directly with sensible defaults, flagging any assumption made along the way.

@@ -42,6 +42,12 @@ interface NetworkGraphProps {
    *  the parent render its own menu there instead. The native menu is
    *  already suppressed for nodes; this is the replacement. */
   onNodeContextMenu?: (node: NetworkNode, clientX: number, clientY: number) => void;
+  /** Fired on right-clicking empty canvas (not a node), with the raw
+   *  viewport coordinates the browser's native context menu would have
+   *  appeared at. Reserved for a future canvas-level action (not yet
+   *  defined) — currently unused if omitted, in which case the native
+   *  menu is still suppressed but nothing else happens. */
+  onCanvasContextMenu?: (clientX: number, clientY: number) => void;
   /** Which nodes/links are currently visible. Defaults to "everything
    *  visible" if omitted. Filtered-out nodes are excluded from the
    *  simulation entirely (not just hidden), so the visible ones reflow
@@ -293,7 +299,7 @@ function curvedLinkPath(d: SimLink): string {
 }
 
 const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function NetworkGraph(
-  { data, minHeight = 500, onZoomChange, onNodeDoubleClick, onNodeContextMenu, filters },
+  { data, minHeight = 500, onZoomChange, onNodeDoubleClick, onNodeContextMenu, onCanvasContextMenu, filters },
   ref
 ) {
   const { ref: containerRef, size } = useContainerSize<HTMLDivElement>();
@@ -302,6 +308,13 @@ const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function 
   // always reach the current zoom behavior, even after a resize causes
   // the effect (and everything it creates) to run again.
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  // Tracks the live zoom/pan transform across effect re-runs (e.g. a
+  // filter change). D3 stores its own transform state on the svg DOM
+  // node itself, separate from this — but that node's stored state
+  // survives a rebuild while our fresh root <g> and fresh zoom behavior
+  // don't know about it, causing a visual/internal mismatch. Keeping our
+  // own copy here lets us explicitly re-sync both after a rebuild.
+  const currentTransformRef = useRef<d3.ZoomTransform>(d3.zoomIdentity);
   // Same pattern, for the current effect run's "clear the selection ring"
   // function — set inside the effect below.
   const clearSelectionRef = useRef<(() => void) | null>(null);
@@ -400,6 +413,7 @@ const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function 
       .zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.1, 4])
       .on("zoom", (event) => {
+        currentTransformRef.current = event.transform;
         root.attr("transform", event.transform.toString());
         onZoomChange?.(event.transform.k);
         labelSelection.attr(
@@ -415,6 +429,17 @@ const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function 
     // handler below. Disabling it here also leaves canvas dblclick free
     // for a different action later.
     svg.on("dblclick.zoom", null);
+
+    // Suppress the native browser context menu on empty canvas too — the
+    // node-level contextmenu handler already does this for nodes. The
+    // actual action is undefined for now; onCanvasContextMenu is an
+    // optional hook a parent can supply once that's decided. Left
+    // unwired for the moment (no parent passes it yet) — this is just
+    // the suppression + the plumbing for later.
+    svg.on("contextmenu", (event) => {
+      event.preventDefault();
+      onCanvasContextMenu?.(event.clientX, event.clientY);
+    });
 
     const linkSelection = root
       .append("g")
@@ -510,6 +535,23 @@ const NetworkGraph = forwardRef<NetworkGraphHandle, NetworkGraphProps>(function 
       // zoom event has fired — kept in sync with the same threshold used
       // in the zoom handler below.
       .attr("display", 1 >= LABEL_VISIBLE_ZOOM_THRESHOLD ? null : "none");
+
+    // Re-sync both D3's internal transform state (stored on the svg DOM
+    // node, which survives selectAll("*").remove() above) and the new
+    // root <g>'s visual transform (which resets to identity on every
+    // rebuild) to whatever zoom/pan was active before this effect re-ran
+    // — e.g. from a filter change. Without this, the <g> resets to 100%
+    // visually while D3 privately still thinks it's at the old
+    // transform, so the *next* zoom/pan jumps back to that stale value
+    // instead of continuing from what's on screen. Skipped on the very
+    // first run, when currentTransformRef is still the identity default,
+    // so it's a no-op then. Deliberately placed here (after
+    // labelSelection exists) rather than right after zoomBehavior is
+    // created — the "zoom" handler above touches labelSelection, and
+    // this call fires that handler synchronously, so it must run after
+    // labelSelection is actually defined or it throws a
+    // before-initialization error.
+    svg.call(zoomBehavior.transform, currentTransformRef.current);
 
     // A single ring, not one per node — only one node can be selected at
     // a time. Positioned around whichever node is currently selected,

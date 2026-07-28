@@ -36,10 +36,10 @@ export default function NodeContextMenu({
       if (event.key === "Escape") onClose();
     }
 
-    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("mousedown", handlePointerDown, true); // true = capture
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("mousedown", handlePointerDown, true); // true = capture
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [node, onClose]);
