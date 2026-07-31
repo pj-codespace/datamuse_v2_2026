@@ -1,0 +1,72 @@
+{
+  "project": {
+    "id": null,
+    "name": "",
+    "description": "",
+    "settings": {
+      "dimensions": {
+        "influence": [
+          { "value": 0, "label": "Influence Level: 0" },
+          { "value": 1, "label": "Influence Level: 1" },
+          { "value": 2, "label": "Influence Level: 2" },
+          { "value": 3, "label": "Influence Level: 3" },
+          { "value": 4, "label": "Influence Level: 4" },
+          { "value": 5, "label": "Influence Level: 5" },
+          { "value": 6, "label": "Influence Level: 6" },
+          { "value": 7, "label": "Influence Level: 7" }
+        ],
+        "interest": [
+          { "value": -3, "label": "Completely Opposed" },
+          { "value": -2, "label": "Opposed" },
+          { "value": -1, "label": "Mildly Opposed" },
+          { "value": 0, "label": "Neutral" },
+          { "value": 1, "label": "Mildly Interested" },
+          { "value": 2, "label": "Interested" },
+          { "value": 3, "label": "Very Interested" }
+        ]
+      },
+      "categories": [
+        {
+          "id": null,
+          "label": "",
+          "color": "",
+          "attributes": []
+        }
+      ],
+      "linkTypes": [
+        {
+          "id": null,
+          "label": "",
+          "directed": true,
+          "color": "",
+          "attributes": []
+        }
+      ],
+      "linkStrengths": [
+        { "value": 0, "id": "weak", "label": "Weak" },
+        {
+          "value": 1,
+          "id": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": 2,
+          "id": "strong",
+          "label": "Strong"
+        }
+      ]
+    },
+    "filters": [
+        {
+            "id": null,
+            "categories": [],
+            "linkTypes": [],
+            "linkStrengths": [],
+            "influenceLevels": [],
+            "interestLevels": [],
+            "createdAt": null,
+            "createdBy": null
+        }
+    ]
+  }
+}

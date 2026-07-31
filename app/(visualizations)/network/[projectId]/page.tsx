@@ -17,5 +17,5 @@ export default async function NetworkProjectPage({ params }: NetworkProjectPageP
 
   const data = await getNetworkData(projectId);
 
-  return <NetworkWorkspace data={data} />;
+  return <NetworkWorkspace data={data} projectId={projectId} />;
 }

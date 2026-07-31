@@ -21,9 +21,14 @@ const RENDER_GRAPH = true;
 
 interface NetworkWorkspaceProps {
   data: NetworkDataset;
+  // The route-param id (e.g. "off-grid-analysis") — matches
+  // PROJECT_REGISTRY entries in app/_lib/data/projects.ts. Threaded down
+  // explicitly rather than derived from `data.project`, since NetworkDataset
+  // never actually carries this string itself.
+  projectId: string;
 }
 
-export default function NetworkWorkspace({ data }: NetworkWorkspaceProps) {
+export default function NetworkWorkspace({ data, projectId }: NetworkWorkspaceProps) {
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [zoomPercent, setZoomPercent] = useState(100);
   const [selectedActorName, setSelectedActorName] = useState<string | null>(null);
@@ -145,6 +150,7 @@ export default function NetworkWorkspace({ data }: NetworkWorkspaceProps) {
           onClose={handleCloseTool}
           selectedActorName={selectedActorName}
           project={data.project}
+          projectId={projectId}
           filters={filters}
           onFiltersChange={setFilters}
         />

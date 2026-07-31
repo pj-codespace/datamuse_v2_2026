@@ -16,6 +16,11 @@ interface ToolSidePanelProps {
   selectedActorName?: string | null;
   /** Needed only for the "filter" tool's real content. */
   project: ProjectMeta;
+  /** Route-param project id (e.g. "off-grid-analysis") — needed by
+   *  FilterPanel's Saved Filters section to scope filters per project.
+   *  Kept separate from `project` since ProjectMeta's own shape isn't
+   *  guaranteed to carry this string. */
+  projectId: string;
   filters: FilterState;
   onFiltersChange: (next: FilterState) => void;
 }
@@ -26,6 +31,7 @@ export default function ToolSidePanel({
   onClose,
   selectedActorName,
   project,
+  projectId,
   filters,
   onFiltersChange,
 }: ToolSidePanelProps) {
@@ -56,7 +62,12 @@ export default function ToolSidePanel({
           </div>
 
           {activeToolDef.id === "filter" ? (
-            <FilterPanel project={project} filters={filters} onChange={onFiltersChange} />
+            <FilterPanel
+              project={project}
+              projectId={projectId}
+              filters={filters}
+              onChange={onFiltersChange}
+            />
           ) : (
             <div className="flex-1 p-4 text-sm text-gray-500">
               {activeToolDef.label} panel — coming soon.
