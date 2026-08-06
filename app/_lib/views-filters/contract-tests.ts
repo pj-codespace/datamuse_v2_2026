@@ -113,6 +113,7 @@ export async function runFilterStoreContractTests(
 
 export async function runViewStoreContractTests(
   store: ViewStore,
+  filterStore: FilterStore,
   label: string
 ): Promise<void> {
   const results: string[] = [];
@@ -120,6 +121,18 @@ export async function runViewStoreContractTests(
 
   const datasetId = `test-dataset-${Date.now()}`;
   const projectId = `test-project-${Date.now()}`;
+
+  // A View's filterRef should always point at a real, previously-created
+  // NamedFilter — synthetic/nonexistent ids aren't a case the running app
+  // ever produces, and some adapters (Postgres, via a FK constraint) will
+  // rightly reject one. So the suite creates a real filter here rather
+  // than using a placeholder string.
+  const backingFilter = await filterStore.create(
+    projectId,
+    "Backing Filter For View Tests",
+    sampleCriteria,
+    "tester"
+  );
 
   // create with layout only, no filter — must be representable
   const layoutOnly = await store.create(
@@ -140,7 +153,7 @@ export async function runViewStoreContractTests(
     "Filtered Only",
     "tester",
     undefined,
-    { mode: "track", namedFilterId: "some-filter-id" }
+    { mode: "track", namedFilterId: backingFilter.id }
   );
   assert.equal(filterOnly.layout, undefined);
   assert.ok(filterOnly.filterRef);

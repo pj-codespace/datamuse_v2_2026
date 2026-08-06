@@ -17,7 +17,7 @@ async function main() {
 
   try {
     await runFilterStoreContractTests(fileFilterStore, "file-adapter");
-    await runViewStoreContractTests(fileViewStore, "file-adapter");
+    await runViewStoreContractTests(fileViewStore, fileFilterStore, "file-adapter");
     console.log("\nAll contract tests passed.");
   } finally {
     await fs.rm(tmpRoot, { recursive: true, force: true });

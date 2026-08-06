@@ -1,13 +1,13 @@
 // app/api/filters/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { fileFilterStore } from "@/app/_lib/views-filters/file-store";
+import { postgresFilterStore } from "@/app/_lib/views-filters/postgres-store";
 
 export async function GET(req: NextRequest) {
   const projectId = req.nextUrl.searchParams.get("projectId");
   if (!projectId) {
     return NextResponse.json({ error: "projectId is required" }, { status: 400 });
   }
-  const filters = await fileFilterStore.list(projectId);
+  const filters = await postgresFilterStore.list(projectId);
   return NextResponse.json(filters);
 }
 
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     );
   }
   // "anonymous" placeholder — no auth/session exists yet (project summary §8).
-  const created = await fileFilterStore.create(
+  const created = await postgresFilterStore.create(
     projectId,
     label,
     criteria,

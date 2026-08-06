@@ -1,10 +1,10 @@
 // app/api/filters/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { fileFilterStore } from "@/app/_lib/views-filters/file-store";
+import { postgresFilterStore } from "@/app/_lib/views-filters/postgres-store";
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const filter = await fileFilterStore.get(id);
+  const filter = await postgresFilterStore.get(id);
   if (!filter) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(filter);
 }
@@ -20,11 +20,11 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   // earlier: editing criteria mints a new FilterValue + history entry;
   // renaming mutates label/description in place with no new history.
   if (body.criteria) {
-    const updated = await fileFilterStore.updateCriteria(id, body.criteria, "anonymous");
+    const updated = await postgresFilterStore.updateCriteria(id, body.criteria, "anonymous");
     return NextResponse.json(updated);
   }
 
-  const renamed = await fileFilterStore.rename(id, body.label, body.description);
+  const renamed = await postgresFilterStore.rename(id, body.label, body.description);
   return NextResponse.json(renamed);
 }
 
@@ -33,6 +33,6 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  await fileFilterStore.softDelete(id);
+  await postgresFilterStore.softDelete(id);
   return NextResponse.json({ ok: true });
 }

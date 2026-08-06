@@ -129,6 +129,7 @@ function SavedFiltersSection({
   const [savedFilters, setSavedFilters] = useState<NamedFilter[]>([]);
   const [loadedFilterId, setLoadedFilterId] = useState<string | null>(null);
   const [newLabel, setNewLabel] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -172,9 +173,11 @@ function SavedFiltersSection({
       const created = await createNamedFilter(
         projectId,
         newLabel.trim(),
-        filterStateToCriteria(filters)
+        filterStateToCriteria(filters),
+        newDescription.trim() || undefined
       );
       setNewLabel("");
+      setNewDescription("");
       setLoadedFilterId(created.id);
       await refresh();
     } catch (err) {
@@ -254,22 +257,31 @@ function SavedFiltersSection({
         </div>
       )}
 
-      <div className="mt-3 flex gap-2">
+      <div className="mt-3 flex flex-col gap-2">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            placeholder="New filter name"
+            value={newLabel}
+            onChange={(e) => setNewLabel(e.target.value)}
+            className="min-w-0 flex-1 rounded border border-gray-300 px-2 py-1 text-sm"
+          />
+          <button
+            type="button"
+            disabled={busy || !newLabel.trim()}
+            onClick={handleSaveAsNew}
+            className="flex-shrink-0 rounded border border-gray-300 px-2 py-1 text-xs text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          >
+            Save as new
+          </button>
+        </div>
         <input
           type="text"
-          placeholder="New filter name"
-          value={newLabel}
-          onChange={(e) => setNewLabel(e.target.value)}
-          className="min-w-0 flex-1 rounded border border-gray-300 px-2 py-1 text-sm"
+          placeholder="Description (optional)"
+          value={newDescription}
+          onChange={(e) => setNewDescription(e.target.value)}
+          className="rounded border border-gray-300 px-2 py-1 text-xs text-gray-700"
         />
-        <button
-          type="button"
-          disabled={busy || !newLabel.trim()}
-          onClick={handleSaveAsNew}
-          className="flex-shrink-0 rounded border border-gray-300 px-2 py-1 text-xs text-gray-700 hover:bg-gray-50 disabled:opacity-50"
-        >
-          Save as new
-        </button>
       </div>
 
       {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
